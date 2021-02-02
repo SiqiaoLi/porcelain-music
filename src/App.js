@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import { loadMusic } from "./actions/musicAction";
+import React, { useEffect } from "react";
+import Player from "./components/Player";
 
 function App() {
+  // fetch music
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadMusic());
+  }, [dispatch]);
+
+  const hit = useSelector((state) => state.music.hit);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Player name={hit.name} artistsname={hit.artistsname} img={hit.picurl} />
+      <audio controls src={hit.url}></audio>
     </div>
   );
 }
