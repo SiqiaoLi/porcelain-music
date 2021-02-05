@@ -26,6 +26,11 @@ function App() {
     dispatch(timeUpdate({ current, duration, percentage }));
   };
 
+  const songEndHandler = async () => {
+    await dispatch(loadMusic());
+    audioRef.current.play();
+  };
+
   return (
     <div className="App">
       <GlobalStyles />
@@ -41,6 +46,7 @@ function App() {
         src={hit.url}
         onLoadedMetadata={timeUpdateHandler}
         onTimeUpdate={timeUpdateHandler}
+        onEnded={songEndHandler}
       ></audio>
     </div>
   );

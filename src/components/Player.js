@@ -32,8 +32,13 @@ const Player = ({ audioRef }) => {
     audioRef.current.currentTime = e.target.value;
   };
 
-  const skipSongHandler = () => {
-    dispatch(loadMusic());
+  const skipSongHandler = async () => {
+    if (isPlaying) {
+      await dispatch(loadMusic());
+      audioRef.current.play();
+    } else {
+      await dispatch(loadMusic());
+    }
   };
 
   const getTime = (time) => {
@@ -60,7 +65,7 @@ const Player = ({ audioRef }) => {
           />
           <AnimateTrack style={trackAnim}></AnimateTrack>
         </Track>
-        <p>{getTime(duration)}</p>
+        <p>{duration ? getTime(duration) : "0:00"}</p>
       </TimeControl>
       <PlayControl>
         <FontAwesomeIcon
