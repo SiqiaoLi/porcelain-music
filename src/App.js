@@ -12,6 +12,7 @@ function App() {
 
   // fetch music
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loadMusic());
   }, [dispatch]);
@@ -21,10 +22,7 @@ function App() {
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
-
-    const roundedCurrent = Math.round(current);
-    const roundedDuration = Math.round(duration);
-    const percentage = Math.round((roundedCurrent / roundedDuration) * 100);
+    const percentage = (current / duration) * 100;
     dispatch(timeUpdate({ current, duration, percentage }));
   };
 

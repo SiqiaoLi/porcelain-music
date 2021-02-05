@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { playSong } from "../actions/playerAction";
+import { loadMusic } from "../actions/musicAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
   faAngleLeft,
   faAngleRight,
   faPause,
-  faVolumeDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Player = ({ audioRef }) => {
@@ -28,10 +28,22 @@ const Player = ({ audioRef }) => {
     }
   };
 
+  const dragHandler = (e) => {
+    audioRef.current.currentTime = e.target.value;
+  };
+
+  const skipSongHandler = () => {
+    dispatch(loadMusic());
+  };
+
   const getTime = (time) => {
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
+  };
+
+  const trackAnim = {
+    transform: `translateX(${animationPercentage}%)`,
   };
 
   return (
@@ -39,13 +51,24 @@ const Player = ({ audioRef }) => {
       <TimeControl>
         <p>{getTime(currentTime)}</p>
         <Track>
-          <input type="range" />
-          <AnimateTrack></AnimateTrack>
+          <input
+            type="range"
+            value={currentTime}
+            max={duration || 0}
+            min={0}
+            onChange={dragHandler}
+          />
+          <AnimateTrack style={trackAnim}></AnimateTrack>
         </Track>
         <p>{getTime(duration)}</p>
       </TimeControl>
       <PlayControl>
-        <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
+        <FontAwesomeIcon
+          className="skip-back"
+          size="2x"
+          icon={faAngleLeft}
+          onClick={skipSongHandler}
+        />
         <FontAwesomeIcon
           onClick={playSongHandler}
           className="play"
@@ -56,6 +79,7 @@ const Player = ({ audioRef }) => {
           className="skip-forward"
           size="2x"
           icon={faAngleRight}
+          onClick={skipSongHandler}
         />
       </PlayControl>
     </StylePlayer>
