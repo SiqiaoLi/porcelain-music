@@ -20,6 +20,7 @@ const Info = styled(motion.div)`
   img {
     width: 50vh;
     object-fit: cover;
+    border-radius: 0.7rem;
   }
   h2 {
     padding: 1rem 1rem 1rem 1rem;
