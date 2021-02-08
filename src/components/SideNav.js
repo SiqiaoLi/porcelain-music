@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Channel from "./Channel";
+import { useSelector } from "react-redux";
 
 const SideNav = () => {
   const channels = ["热歌榜", "新歌榜", "飙升榜", "抖音榜", "电音榜"];
+  const sideNavStatus = useSelector((state) => state.navStatus);
 
   return (
-    <StyledSide>
+    <StyledSide className={`${sideNavStatus ? "active-SideNav" : ""}`}>
       <h2>Channel</h2>
       {channels.map((channel, index) => (
         <Channel channel={channel} key={index} />
@@ -23,9 +25,9 @@ const StyledSide = styled.div`
   height: 100%;
   overflow: scroll;
   background: white;
-  transform: translateX(0%);
+  transform: translateX(-100%);
   transition: all 0.5s ease;
-  opacity: 1;
+  opacity: 0;
   h2 {
     padding: 2rem;
   }

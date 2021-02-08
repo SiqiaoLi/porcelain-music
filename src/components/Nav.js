@@ -1,11 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { toggleNav } from "../actions/navAction";
+import { useDispatch } from "react-redux";
 
 const Nav = () => {
+  const dispatch = useDispatch();
+
+  const openSideNavHandler = () => {
+    dispatch(toggleNav());
+  };
+
   return (
     <StyledNav>
       <h1>Porcelain</h1>
-      <button>Channel</button>
+      <button onClick={openSideNavHandler}>Channel</button>
     </StyledNav>
   );
 };

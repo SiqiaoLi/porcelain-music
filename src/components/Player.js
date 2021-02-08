@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { playSong } from "../actions/playerAction";
 import { loadMusic } from "../actions/musicAction";

@@ -16,6 +16,11 @@ const GlobalStyles = createGlobalStyle`
     height: 16px;
     width: 16px;
   }
+
+  .active-SideNav{
+    transform: translateX(0%);
+    opacity: 1;
+  }
 `;
 
 export default GlobalStyles;
