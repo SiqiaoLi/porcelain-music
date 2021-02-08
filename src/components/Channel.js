@@ -1,22 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectChannel } from "../actions/channelAction";
+import styled from "styled-components";
 
 const Channel = ({ channel }) => {
   const dispatch = useDispatch();
+  const currentChannel = useSelector((state) => state.channel);
 
   return (
-    <div
-      onClick={() => {
-        dispatch(selectChannel(channel));
-      }}
-    >
-      <Link to={`/${channel}`}>
+    <Link to={`/${channel}`}>
+      <StyledChannel
+        onClick={() => {
+          dispatch(selectChannel(channel));
+        }}
+        className={`${currentChannel === channel ? "selected" : ""}`}
+      >
         <h3>{channel}</h3>
-      </Link>
-    </div>
+      </StyledChannel>
+    </Link>
   );
 };
+
+const StyledChannel = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.75s ease-out;
+  &:hover {
+    background: rgb(235, 235, 235);
+  }
+`;
 
 export default Channel;

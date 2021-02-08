@@ -17,9 +17,26 @@ const GlobalStyles = createGlobalStyle`
     width: 16px;
   }
 
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
   .active-SideNav{
     transform: translateX(0%);
     opacity: 1;
+  }
+
+  .selected {
+    background: rgb(194, 208, 253);
+  }
+
+  .App{
+    transition: all 0.5s ease;
+  }
+
+  .side-open {
+    margin-left: 7%;
   }
 `;
 

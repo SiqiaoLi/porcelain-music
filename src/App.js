@@ -13,6 +13,7 @@ function App() {
   const song = useSelector((state) => state.music.song);
   const channel = useSelector((state) => state.channel);
   const isPlaying = useSelector((state) => state.isPlaying);
+  const sideNavStatus = useSelector((state) => state.navStatus);
 
   const audioRef = useRef(null);
 
@@ -42,9 +43,9 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={`App ${sideNavStatus ? "side-open" : ""}`}>
       <GlobalStyles />
-      <Route exact path={["/:channel", "/"]}>
+      <Route path={["/", "/:channel"]}>
         <Nav />
         <SongInfo
           name={song.name}
