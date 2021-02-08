@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
 const SongInfo = ({ name, artistsname, img }) => {
   return (
@@ -11,7 +10,7 @@ const SongInfo = ({ name, artistsname, img }) => {
   );
 };
 
-const Info = styled(motion.div)`
+const Info = styled.div`
   min-height: 60vh;
   display: flex;
   flex-direction: column;

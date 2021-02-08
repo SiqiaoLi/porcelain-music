@@ -1,5 +1,5 @@
 const initState = {
-  hit: [],
+  song: [],
 };
 
 const musicReducer = (state = initState, action) => {
@@ -7,7 +7,7 @@ const musicReducer = (state = initState, action) => {
     case "FETCH_MUSIC":
       return {
         ...state,
-        hit: action.payload.hit,
+        song: action.payload.song,
       };
     default:
       return {

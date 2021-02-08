@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMusic } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
   return (
@@ -13,7 +10,7 @@ const Nav = () => {
   );
 };
 
-const StyledNav = styled(motion.div)`
+const StyledNav = styled.div`
   min-height: 10vh;
   display: flex;
   justify-content: space-around;

@@ -12,10 +12,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Player = ({ audioRef }) => {
+  // get states
   const isPlaying = useSelector((state) => state.isPlaying);
+  const channel = useSelector((state) => state.channel);
   const { currentTime, duration, animationPercentage } = useSelector(
     (state) => state.timeInfo
   );
+
   const dispatch = useDispatch();
 
   const playSongHandler = () => {
@@ -33,11 +36,9 @@ const Player = ({ audioRef }) => {
   };
 
   const skipSongHandler = async () => {
+    await dispatch(loadMusic(channel));
     if (isPlaying) {
-      await dispatch(loadMusic());
       audioRef.current.play();
-    } else {
-      await dispatch(loadMusic());
     }
   };
 
@@ -91,7 +92,7 @@ const Player = ({ audioRef }) => {
   );
 };
 
-const StylePlayer = styled(motion.div)`
+const StylePlayer = styled.div`
   min-height: 20vh;
   display: flex;
   flex-direction: column;
@@ -99,7 +100,7 @@ const StylePlayer = styled(motion.div)`
   justify-content: space-between;
 `;
 
-const TimeControl = styled(motion.div)`
+const TimeControl = styled.div`
   width: 50%;
   display: flex;
   align-items: center;
@@ -114,7 +115,7 @@ const TimeControl = styled(motion.div)`
   }
 `;
 
-const PlayControl = styled(motion.div)`
+const PlayControl = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,7 +126,7 @@ const PlayControl = styled(motion.div)`
   }
 `;
 
-const Track = styled(motion.div)`
+const Track = styled.div`
   width: 100%;
   height: 1rem;
   position: relative;
@@ -134,7 +135,7 @@ const Track = styled(motion.div)`
   background: linear-gradient(to right, #8c8ceb, #ac4a81);
 `;
 
-const AnimateTrack = styled(motion.div)`
+const AnimateTrack = styled.div`
   background: rgb(204, 204, 204);
   width: 100%;
   height: 100%;

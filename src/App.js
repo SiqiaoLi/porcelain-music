@@ -6,18 +6,28 @@ import SongInfo from "./components/SongInfo";
 import Nav from "./components/Nav";
 import GlobalStyles from "./components/GlobalStyles";
 import { timeUpdate } from "./actions/playerAction";
+import { Route } from "react-router-dom";
+import SideNav from "./components/SideNav";
 
 function App() {
+  const song = useSelector((state) => state.music.song);
+  const channel = useSelector((state) => state.channel);
+  const isPlaying = useSelector((state) => state.isPlaying);
+
   const audioRef = useRef(null);
 
   // fetch music
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadMusic());
-  }, [dispatch]);
-
-  const hit = useSelector((state) => state.music.hit);
+    async function loading() {
+      await dispatch(loadMusic(channel));
+      if (isPlaying) {
+        audioRef.current.play();
+      }
+    }
+    loading();
+  }, [dispatch, channel]);
 
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
@@ -27,27 +37,30 @@ function App() {
   };
 
   const songEndHandler = async () => {
-    await dispatch(loadMusic());
+    await dispatch(loadMusic(channel));
     audioRef.current.play();
   };
 
   return (
     <div className="App">
       <GlobalStyles />
-      <Nav />
-      <SongInfo
-        name={hit.name}
-        artistsname={hit.artistsname}
-        img={hit.picurl}
-      />
-      <Player audioRef={audioRef} />
-      <audio
-        ref={audioRef}
-        src={hit.url}
-        onLoadedMetadata={timeUpdateHandler}
-        onTimeUpdate={timeUpdateHandler}
-        onEnded={songEndHandler}
-      ></audio>
+      <Route exact path={["/:channel", "/"]}>
+        <Nav />
+        <SongInfo
+          name={song.name}
+          artistsname={song.artistsname}
+          img={song.picurl}
+        />
+        <Player audioRef={audioRef} />
+        <SideNav />
+        <audio
+          ref={audioRef}
+          src={song.url}
+          onLoadedMetadata={timeUpdateHandler}
+          onTimeUpdate={timeUpdateHandler}
+          onEnded={songEndHandler}
+        ></audio>
+      </Route>
     </div>
   );
 }
