@@ -38,6 +38,9 @@ const StyledNav = styled.div`
       background: rgb(51, 51, 51);
       color: white;
     }
+    &:focus {
+      outline: 0 !important;
+    }
   }
 
   @media screen and (max-width: 768px) {
