@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Player from "./components/Player";
 import SongInfo from "./components/SongInfo";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import GlobalStyles from "./components/GlobalStyles";
 import { timeUpdate } from "./actions/playerAction";
 import { Route } from "react-router-dom";
@@ -62,6 +63,7 @@ function App() {
           onEnded={songEndHandler}
         ></audio>
       </Route>
+      <Footer />
     </div>
   );
 }
