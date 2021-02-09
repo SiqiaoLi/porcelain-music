@@ -53,7 +53,7 @@ const Player = ({ audioRef }) => {
 
   return (
     <StylePlayer>
-      <TimeControl>
+      <TimeControl className="time-control">
         <p>{getTime(currentTime)}</p>
         <Track>
           <input
@@ -67,7 +67,7 @@ const Player = ({ audioRef }) => {
         </Track>
         <p>{duration ? getTime(duration) : "0:00"}</p>
       </TimeControl>
-      <PlayControl>
+      <PlayControl className="play-control">
         <FontAwesomeIcon
           className="skip-back"
           size="2x"

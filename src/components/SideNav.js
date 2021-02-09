@@ -7,7 +7,7 @@ const SideNav = () => {
   const sideNavStatus = useSelector((state) => state.navStatus);
 
   return (
-    <StyledSide className={`${sideNavStatus ? "active-SideNav" : ""}`}>
+    <StyledSide className={`sideNav ${sideNavStatus ? "active-SideNav" : ""}`}>
       <h2>Channel</h2>
       {channels.map((channel, index) => (
         <Channel channel={channel} key={index} />

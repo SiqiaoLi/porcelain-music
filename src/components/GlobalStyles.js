@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: black;
+    color: rgb(51, 51, 51);
     text-decoration: none;
   }
 
@@ -43,6 +43,32 @@ const GlobalStyles = createGlobalStyle`
   .side-open {
     margin-left: 7%;
   }
+
+  @media screen and (max-width: 768px) {
+    .sideNav {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 1110px){
+    .time-control {
+      width: 60%;
+    }
+    .play-control {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 810px){
+    .time-control {
+      width: 80%;
+    }
+    .play-control {
+      width: 70%;
+    }
+  }
+
+
 `;
 
 export default GlobalStyles;

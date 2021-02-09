@@ -39,6 +39,12 @@ const StyledNav = styled.div`
       color: white;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    button {
+      z-index: 10;
+    }
+  }
 `;
 
 export default Nav;
