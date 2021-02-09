@@ -16,6 +16,7 @@ const Info = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: rgb(51, 51, 51);
   img {
     width: 50vh;
     object-fit: cover;
@@ -23,9 +24,11 @@ const Info = styled.div`
   }
   h2 {
     padding: 1rem 1rem 1rem 1rem;
+    font-weight: 500;
   }
   h3 {
     font-size: 1rem;
+    font-weight: 400;
   }
 `;
 

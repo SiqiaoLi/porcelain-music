@@ -28,8 +28,11 @@ const StyledSide = styled.div`
   transform: translateX(-100%);
   transition: all 0.5s ease;
   opacity: 0;
+  color: rgb(51, 51, 51);
+
   h2 {
     padding: 2rem;
+    font-weight: 500;
   }
 `;
 

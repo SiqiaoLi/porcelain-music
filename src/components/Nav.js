@@ -23,6 +23,8 @@ const StyledNav = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  color: rgb(51, 51, 51);
+
   button {
     font-size: 1rem;
     background: transparent;
@@ -30,10 +32,10 @@ const StyledNav = styled.div`
     border: none;
     cursor: pointer;
     padding: 0.5rem;
-    border: 2px solid rgb(65, 65, 65);
+    border: 2px solid rgb(51, 51, 51);
     transition: all 0.3s ease;
     &:hover {
-      background: rgb(65, 65, 65);
+      background: rgb(51, 51, 51);
       color: white;
     }
   }

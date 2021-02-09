@@ -28,6 +28,9 @@ const StyledChannel = styled.div`
   padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
   transition: all 0.75s ease-out;
+  h3 {
+    font-weight: 400;
+  }
   &:hover {
     background: rgb(235, 235, 235);
   }
