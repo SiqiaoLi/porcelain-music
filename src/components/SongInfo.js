@@ -17,6 +17,7 @@ const Info = styled.div`
   justify-content: center;
   align-items: center;
   color: rgb(51, 51, 51);
+  padding-top: 1rem;
   img {
     width: 50vh;
     object-fit: cover;

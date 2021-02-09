@@ -24,6 +24,8 @@ const StyledNav = styled.div`
   justify-content: space-around;
   align-items: center;
   color: rgb(51, 51, 51);
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
 
   button {
     font-size: 1rem;
