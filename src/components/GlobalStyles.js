@@ -44,11 +44,6 @@ const GlobalStyles = createGlobalStyle`
     margin-left: 7%;
   }
 
-  @media screen and (max-width: 768px) {
-    .sideNav {
-      width: 100%;
-    }
-  }
 
   @media screen and (max-width: 1110px){
     .time-control {
