@@ -1,7 +1,8 @@
-import React from "react";
 import styled from "styled-components";
 import { toggleNav } from "../actions/navAction";
 import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,10 @@ const Nav = () => {
 
   return (
     <StyledNav>
-      <h1>Porcelain</h1>
+      <h1>
+        <FontAwesomeIcon icon={faCircle} />
+        <span> </span>Porcelain
+      </h1>
       <button onClick={openSideNavHandler}>Channel</button>
     </StyledNav>
   );
@@ -28,7 +32,7 @@ const StyledNav = styled.div`
   padding-bottom: 1rem;
 
   button {
-    font-size: 1rem;
+    font-size: 1.1rem;
     background: transparent;
     border-radius: 0.3rem;
     border: none;

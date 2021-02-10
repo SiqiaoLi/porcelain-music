@@ -4,10 +4,10 @@ import { playSong } from "../actions/playerAction";
 import { loadMusic } from "../actions/musicAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPlay,
-  faAngleLeft,
-  faAngleRight,
-  faPause,
+  faPlayCircle,
+  faStepBackward,
+  faStepForward,
+  faPauseCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Player = ({ audioRef }) => {
@@ -69,21 +69,18 @@ const Player = ({ audioRef }) => {
       </TimeControl>
       <PlayControl className="play-control">
         <FontAwesomeIcon
-          className="skip-back"
-          size="2x"
-          icon={faAngleLeft}
+          size="lg"
+          icon={faStepBackward}
           onClick={skipSongHandler}
         />
         <FontAwesomeIcon
           onClick={playSongHandler}
-          className="play"
-          size="2x"
-          icon={isPlaying ? faPause : faPlay}
+          size="3x"
+          icon={isPlaying ? faPauseCircle : faPlayCircle}
         />
         <FontAwesomeIcon
-          className="skip-forward"
-          size="2x"
-          icon={faAngleRight}
+          size="lg"
+          icon={faStepForward}
           onClick={skipSongHandler}
         />
       </PlayControl>

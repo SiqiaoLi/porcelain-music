@@ -41,7 +41,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .side-open {
-    margin-left: 7%;
+    margin-left: 6%;
   }
 
 
@@ -62,7 +62,6 @@ const GlobalStyles = createGlobalStyle`
       width: 70%;
     }
   }
-
 
 `;
 

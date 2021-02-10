@@ -9,14 +9,17 @@ const Channel = ({ channel }) => {
   const currentChannel = useSelector((state) => state.channel);
 
   return (
-    <Link to={`/${channel}`}>
+    <Link to={`/${channel.name}`}>
       <StyledChannel
         onClick={() => {
-          dispatch(selectChannel(channel));
+          dispatch(selectChannel(channel.name));
         }}
-        className={`${currentChannel === channel ? "selected" : ""}`}
+        className={`${currentChannel === channel.name ? "selected" : ""}`}
       >
-        <h3>{channel}</h3>
+        <h3>
+          <div className="icon">{channel.icon}</div>
+          <div>{channel.name}</div>
+        </h3>
       </StyledChannel>
     </Link>
   );
@@ -30,6 +33,11 @@ const StyledChannel = styled.div`
   transition: all 0.75s ease-out;
   h3 {
     font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    .icon {
+      width: 2.5rem;
+    }
   }
   &:hover {
     background: rgb(235, 235, 235);
