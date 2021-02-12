@@ -19,17 +19,20 @@ const Info = styled.div`
   color: rgb(51, 51, 51);
   padding-top: 1rem;
   img {
-    width: 50vh;
+    width: 40vh;
     object-fit: cover;
     border-radius: 0.7rem;
   }
   h2 {
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
     font-weight: 500;
   }
   h3 {
     font-size: 1rem;
     font-weight: 400;
+  }
+  @media screen and (max-width: 510px) {
+    min-height: 50vh;
   }
 `;
 

@@ -27,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
-  .active-SideNav{
+  .active-sidenav{
     transform: translateX(0%);
     opacity: 1;
   }
@@ -41,26 +41,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .side-open {
-    margin-left: 6%;
-  }
-
-
-  @media screen and (max-width: 1110px){
-    .time-control {
-      width: 60%;
-    }
-    .play-control {
-      width: 50%;
-    }
-  }
-
-  @media screen and (max-width: 810px){
-    .time-control {
-      width: 80%;
-    }
-    .play-control {
-      width: 70%;
-    }
+    margin-left: 3%;
   }
 
 `;

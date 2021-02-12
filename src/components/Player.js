@@ -53,7 +53,7 @@ const Player = ({ audioRef }) => {
 
   return (
     <StylePlayer>
-      <TimeControl className="time-control">
+      <TimeControl>
         <p>{getTime(currentTime)}</p>
         <Track>
           <input
@@ -67,7 +67,7 @@ const Player = ({ audioRef }) => {
         </Track>
         <p>{duration ? getTime(duration) : "0:00"}</p>
       </TimeControl>
-      <PlayControl className="play-control">
+      <PlayControl>
         <FontAwesomeIcon
           size="lg"
           icon={faStepBackward}
@@ -110,6 +110,15 @@ const TimeControl = styled.div`
   p {
     padding: 1rem;
   }
+  @media screen and (max-width: 1110px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 810px) {
+    width: 85%;
+  }
+  @media screen and (max-width: 510px) {
+    width: 95%;
+  }
 `;
 
 const PlayControl = styled.div`
@@ -120,6 +129,12 @@ const PlayControl = styled.div`
   width: 40%;
   svg {
     cursor: pointer;
+  }
+  @media screen and (max-width: 1110px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 810px) {
+    width: 70%;
   }
 `;
 

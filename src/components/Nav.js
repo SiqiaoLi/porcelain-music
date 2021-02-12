@@ -13,10 +13,10 @@ const Nav = () => {
 
   return (
     <StyledNav>
-      <h1>
+      <h2>
         <FontAwesomeIcon icon={faCircle} />
         <span> </span>Porcelain
-      </h1>
+      </h2>
       <button onClick={openSideNavHandler}>Channel</button>
     </StyledNav>
   );
@@ -25,12 +25,13 @@ const Nav = () => {
 const StyledNav = styled.div`
   min-height: 10vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   color: rgb(51, 51, 51);
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  h2 {
+    font-size: 1.7rem;
+  }
   button {
     font-size: 1.1rem;
     background: transparent;
