@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { playSong } from "../actions/playerAction";
@@ -30,6 +31,24 @@ const Player = ({ audioRef }) => {
     }
   };
 
+  const useKey = (key, cb) => {
+    const callbackRef = useRef(cb);
+    useEffect(() => {
+      callbackRef.current = cb;
+    });
+    useEffect(() => {
+      const handle = (event) => {
+        if (event.code === key) {
+          callbackRef.current(event);
+        }
+      };
+      document.addEventListener("keydown", handle);
+      return () => {
+        document.removeEventListener("keydown", handle);
+      };
+    }, [key]);
+  };
+
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value;
   };
@@ -50,6 +69,8 @@ const Player = ({ audioRef }) => {
   const trackAnim = {
     transform: `translateX(${animationPercentage}%)`,
   };
+
+  useKey("Space", playSongHandler);
 
   return (
     <StylePlayer>
