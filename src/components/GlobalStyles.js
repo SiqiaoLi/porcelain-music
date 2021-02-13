@@ -12,11 +12,11 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
   }
 
-  input[type='range']:focus {
+  input[type=range]:focus {
     outline: none;
   }
 
-  input[type='range']::-webkit-slider-thumb{
+  input[type=range]::-webkit-slider-thumb{
     -webkit-appearance: none;
     height: 16px;
     width: 16px;
@@ -25,6 +25,15 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: rgb(51, 51, 51);
     text-decoration: none;
+  }
+
+  .App{
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .content-wrap{
+    padding-bottom:2.5rem;
   }
 
   .active-sidenav{

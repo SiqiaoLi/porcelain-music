@@ -47,21 +47,23 @@ function App() {
     <div className={`App ${sideNavStatus ? "side-open" : ""}`}>
       <GlobalStyles />
       <Route path={["/", "/:channel"]}>
-        <Nav />
-        <SongInfo
-          name={song.name}
-          artistsname={song.artistsname}
-          img={song.picurl}
-        />
-        <Player audioRef={audioRef} />
-        <SideNav />
-        <audio
-          ref={audioRef}
-          src={song.url}
-          onLoadedMetadata={timeUpdateHandler}
-          onTimeUpdate={timeUpdateHandler}
-          onEnded={songEndHandler}
-        ></audio>
+        <div className="content-wrap">
+          <Nav />
+          <SongInfo
+            name={song.name}
+            artistsname={song.artistsname}
+            img={song.picurl}
+          />
+          <Player audioRef={audioRef} />
+          <SideNav />
+          <audio
+            ref={audioRef}
+            src={song.url}
+            onLoadedMetadata={timeUpdateHandler}
+            onTimeUpdate={timeUpdateHandler}
+            onEnded={songEndHandler}
+          ></audio>
+        </div>
       </Route>
       <Footer />
     </div>

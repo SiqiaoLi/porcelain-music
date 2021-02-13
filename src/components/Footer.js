@@ -9,10 +9,10 @@ const Footer = () => {
 };
 
 const StyledFooter = styled.footer`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
-  min-height: 7vh;
+  height: 2.5rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
