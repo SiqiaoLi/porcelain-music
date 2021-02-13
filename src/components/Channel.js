@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectChannel } from "../actions/channelAction";
 import styled from "styled-components";
@@ -9,19 +8,17 @@ const Channel = ({ channel }) => {
   const currentChannel = useSelector((state) => state.channel);
 
   return (
-    <Link to={`/${channel.name}`}>
-      <StyledChannel
-        onClick={() => {
-          dispatch(selectChannel(channel.name));
-        }}
-        className={`${currentChannel === channel.name ? "selected" : ""}`}
-      >
-        <h3>
-          <div className="icon">{channel.icon}</div>
-          <div>{channel.name}</div>
-        </h3>
-      </StyledChannel>
-    </Link>
+    <StyledChannel
+      onClick={() => {
+        dispatch(selectChannel(channel.name));
+      }}
+      className={`${currentChannel === channel.name ? "selected" : ""}`}
+    >
+      <h3>
+        <div className="icon">{channel.icon}</div>
+        <div>{channel.name}</div>
+      </h3>
+    </StyledChannel>
   );
 };
 

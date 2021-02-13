@@ -7,7 +7,6 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import GlobalStyles from "./components/GlobalStyles";
 import { timeUpdate } from "./actions/playerAction";
-import { Route } from "react-router-dom";
 import SideNav from "./components/SideNav";
 
 function App() {
@@ -46,25 +45,23 @@ function App() {
   return (
     <div className={`App ${sideNavStatus ? "side-open" : ""}`}>
       <GlobalStyles />
-      <Route path={["/", "/:channel"]}>
-        <div className="content-wrap">
-          <Nav />
-          <SongInfo
-            name={song.name}
-            artistsname={song.artistsname}
-            img={song.picurl}
-          />
-          <Player audioRef={audioRef} />
-          <SideNav />
-          <audio
-            ref={audioRef}
-            src={song.url}
-            onLoadedMetadata={timeUpdateHandler}
-            onTimeUpdate={timeUpdateHandler}
-            onEnded={songEndHandler}
-          ></audio>
-        </div>
-      </Route>
+      <div className="content-wrap">
+        <Nav />
+        <SongInfo
+          name={song.name}
+          artistsname={song.artistsname}
+          img={song.picurl}
+        />
+        <Player audioRef={audioRef} />
+        <SideNav />
+        <audio
+          ref={audioRef}
+          src={song.url}
+          onLoadedMetadata={timeUpdateHandler}
+          onTimeUpdate={timeUpdateHandler}
+          onEnded={songEndHandler}
+        ></audio>
+      </div>
       <Footer />
     </div>
   );

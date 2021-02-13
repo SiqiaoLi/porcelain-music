@@ -70,6 +70,7 @@ const Player = ({ audioRef }) => {
     transform: `translateX(${animationPercentage}%)`,
   };
 
+  // use space to control player
   useKey("Space", playSongHandler);
 
   return (
