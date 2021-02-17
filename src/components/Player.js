@@ -162,7 +162,7 @@ const PlayControl = styled.div`
 
 const Track = styled.div`
   width: 100%;
-  height: 1rem;
+  height: 0.7rem;
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
