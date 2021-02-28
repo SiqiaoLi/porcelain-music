@@ -27,7 +27,7 @@ const Player = ({ audioRef }) => {
       audioRef.current.pause();
     } else {
       dispatch(playSong());
-      audioRef.current.play();
+      audioRef.current.play().catch((e) => console.log(e));
     }
   };
 
@@ -56,7 +56,7 @@ const Player = ({ audioRef }) => {
   const skipSongHandler = async () => {
     await dispatch(loadMusic(channel));
     if (isPlaying) {
-      audioRef.current.play();
+      audioRef.current.play().catch((e) => console.log(e));
     }
   };
 

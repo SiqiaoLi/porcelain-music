@@ -24,7 +24,7 @@ function App() {
     async function loading() {
       await dispatch(loadMusic(channel));
       if (isPlaying) {
-        audioRef.current.play();
+        audioRef.current.play().catch((e) => console.log(e));
       }
     }
     loading();
@@ -39,7 +39,7 @@ function App() {
 
   const songEndHandler = async () => {
     await dispatch(loadMusic(channel));
-    audioRef.current.play();
+    audioRef.current.play().catch((e) => console.log(e));
   };
 
   return (
