@@ -12,6 +12,7 @@ const timeUpdateReducer = (state = initialState, action) => {
     default:
       return {
         ...state,
+        currentTime: 0,
       };
   }
 };

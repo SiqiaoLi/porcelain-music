@@ -28,6 +28,7 @@ function App() {
       }
     }
     loading();
+    // eslint-disable-next-line
   }, [dispatch, channel]);
 
   const timeUpdateHandler = (e) => {

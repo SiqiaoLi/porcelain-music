@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { playSong } from "../actions/playerAction";
+import { playSong, timeUpdate } from "../actions/playerAction";
 import { loadMusic } from "../actions/musicAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,6 +18,7 @@ const Player = ({ audioRef }) => {
   const { currentTime, duration, animationPercentage } = useSelector(
     (state) => state.timeInfo
   );
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ const Player = ({ audioRef }) => {
       audioRef.current.pause();
     } else {
       dispatch(playSong());
-      audioRef.current.play().catch((e) => console.log(e));
+      audioRef.current.play().catch((e) => setShowErrorMessage(true));
     }
   };
 
@@ -54,9 +55,13 @@ const Player = ({ audioRef }) => {
   };
 
   const skipSongHandler = async () => {
+    setShowErrorMessage(false);
     await dispatch(loadMusic(channel));
     if (isPlaying) {
-      audioRef.current.play().catch((e) => console.log(e));
+      audioRef.current.play().catch((e) => {
+        setShowErrorMessage(true);
+        dispatch(timeUpdate({ current: 0, duration: 0, percentage: 0 }));
+      });
     }
   };
 
@@ -75,6 +80,11 @@ const Player = ({ audioRef }) => {
 
   return (
     <StylePlayer>
+      {showErrorMessage && (
+        <ErrorMessage>
+          Fail to load the song because no supported source was found
+        </ErrorMessage>
+      )}
       <TimeControl>
         <p>{getTime(currentTime)}</p>
         <Track>
@@ -179,6 +189,11 @@ const AnimateTrack = styled.div`
   transform: translateX(0%);
   padding: 1rem;
   pointer-events: none;
+`;
+
+const ErrorMessage = styled.div`
+  margin-top: 10px;
+  color: red;
 `;
 
 export default Player;

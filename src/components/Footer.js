@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 const Footer = () => {
+  let year = new Date().getFullYear();
   return (
     <StyledFooter>
-      <p>&copy; 2021 Porcelain</p>
+      <p>&copy; {year} Porcelain</p>
     </StyledFooter>
   );
 };
